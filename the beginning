@@ -1,0 +1,18 @@
+
+printf("hello, world"); #printf equals to 'say' in Scratch
+                        #semicolon ';' presents the end of the thought
+
+get_string("What's your name? ") #get_string equals to 'ask' in Scratch
+string answer = get_string("What's your name? "); #we copy the answer into a variable named 'answer'
+
+#return value: a piece of information, being stored somewhere, where we can make use of it later
+printf("hello, %s", answer); #first comma is a grammatical one, while the second comma separates the first argument from the second one
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+int main(void)
+{
+    string answer = get_string("What's your name?? ");
+    print("hello, %s, answer");
+}
+
