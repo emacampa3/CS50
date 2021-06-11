@@ -16,3 +16,90 @@ int main(void)
     print("hello, %s, answer");
 }
 
+printf("hello, world"); #printf equals to 'say' in Scratch
+                        #semicolon ';' presents the end of the thought
+
+get_string("What's your name? ") #get_string equals to 'ask' in Scratch
+string answer = get_string("What's your name? "); #we copy the answer into a variable named 'answer'
+
+#return value: a piece of information, being stored somewhere, where we can make use of it later
+printf("hello, %s", answer); #first comma is a grammatical one, while the second comma separates the first argument from the second one
+
+#include <stdio.h>
+int main(void) #this is how you start writing a program
+{
+
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+int main(void)
+{
+    string answer = get_string("What's your name?? ");
+    print("hello, %s, answer");
+}
+
+include #<stdio.h>
+int main(void)
+{
+    // Greet user #a remainder of what that line does
+    printf("hello, world")
+}
+
+
+STANDARD COMMANDS
+------------------------------------------------------------------------------------------------------------------------------------------
+
+'ls' = Linus shell command: prints all the files and directories in the present directory in the form of a list
+
+'rm document_name' =asks to remove that document from the directory (typing 'y' or 'yes' approves the action itself)
+'rmdir' = remove directory
+
+'mv' = move command: mv hello.c goodbye.c it moves a file to another location or under another name
+
+'mkdir directory_name' = make directory (for example, named 'lecture')
+
+we can move the document_file (hello.c) into directory: 'mv hello.c lecture/'
+
+we can check what is inside a certain directory by typing the 'cd lecture/' into terminal 
+the result is: /lecture/ and by typing 'ls' we get a response (a list), showing us what is inside that directory
+
+'mv hello.c' .. means that we remove the folder from the directory (directory is empty): the folder is now equal to the directory
+'..' reffers to your parent directory
+'.' reffers to your current directory
+
+'./hello.c' tells the computer to run the program called 'hello.c' in the current directory
+
+'cp' = copy
+
+
+BASIC CALCULATOR
+------------------------------------------------------------------------------------------------------------------------------------------
+
+int main(void)
+{
+    int x = get_int("x: "); #int = integer (uses only 32 bits): number without decimal points (..., -3, -2, -1, 0, 1, 2, 3, ...)
+    int y = get_int("y: ");
+    printf("%i", x + y);         # %i is a plceholder for a unknown number
+}
+
+we then type into terminal 'make addition' (= name of the file)
+if no errors occur, we are prompted to type individually 'x' and 'y' values into the terminal
+and the result (addition of the x and y) is seen on terminal
+
+if anything else than an integer is writen into terminal as it asks from x and y values,
+terminal ignores the answer and asks for it again
+if the number is too high (with 32 bits you can roughly count to as high as 4 billion: either in positive or negative numbers)
+but if we want to include both negative and positive numbers, we can only count 2 billion into each direction
+
+long = longer integer (64 bits long)
+
+int main(void)
+{
+    long x = get_long("x: "); 
+    long y = get_long("y: ");
+    printf("%li", x + y);    
+}
+
+change 'int' into 'long'
+the program doesnt work: error is that instead of placeholder '&i' we now have to use '%li' which stands for long integer
