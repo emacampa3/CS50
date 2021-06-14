@@ -103,3 +103,143 @@ int main(void)
 
 change 'int' into 'long'
 the program doesnt work: error is that instead of placeholder '&i' we now have to use '%li' which stands for long integer
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+int main(void)
+{
+    // Get numbers from user (comment)
+    int x = get_int("x: "); #float: short for floating point value: a real number
+    int y = get_int("y: ");
+   
+    // Divide x by y
+    float z = x /y;
+    printf("%f", z);    
+}
+
+bug: improper use of C
+if both x and y are integers, by definition: you're gonna get back an integer: but you lose all the decimal points 
+changing int into float would fix that problem
+instead: float z = (float) x / (float) y; we can convert x and y into a float and then do the math
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+int counter = 0; (set counter to 0)
+
+#adding + 1 to a variable:
+counter = counter + 1;
+counter += 1;
+counter++;
+
+if (x < y)
+{
+    printf("x is less than y")
+}
+else if (x > y)
+{
+    printf("x is not less than y")
+}
+else
+{
+    printf("x is equal to y")
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+int main(void)
+{
+   char c = get_char("Do you agree? "); #char requires a single quote
+   if (c == 'y' || C == 'Y') # || means 'or'
+   {
+       printf("Agreed.")
+   }
+   else if (c == 'n' || C == 'N')
+   {    
+       printf("Not agreed.")
+   }
+}
+
+# a program takes only n and y, not N and Y
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+while (true) #infinite loop
+{
+  
+}
+
+int i = 0;
+while (i < 50) #finite loop
+{
+   printf("hello, world");
+   i++;
+}
+
+
+for (int counter = 0; i <50; i++) #the best way in C to do a repetitive action finite number of times
+{
+   printf("hello, world"); 
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+abstraction: 
+
+void meow(void); #showing the compailer that a function meow exists at the bottom
+
+int main(void)
+{
+   for (int i = 0; i <3; i++)
+   {
+      meow();
+   }
+}
+
+
+
+void meow(int n)
+{
+   for (int i = 0; i < n; i++)
+   {
+   printf("meow");
+   }
+}
+
+# void: the absence of input/output
+------------------------------------------------------------------------------------------------------------------------------------------
+
+NESTED LOOP:
+
+int main(void)
+{
+   for (int i = 0; i < 3; i++)
+   {
+      for (int j = 0; j < 3; j++)
+      {
+         printf("#");
+      }
+      printf("\n"); #moves it into next line
+   }
+}
+
+RETURN: 
+###
+###
+###
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+printf("%f\n", x / y); #gives a certain number of deciaml points
+printf("%.10f\n", x / y); #gives 10 decimal points: impercision (a computer can only give a finite number of decimal points, after that it approximates)
+
+integer overflow:
+000
+001
+010
+100
+101
+110
+111 = 7
+
+19 January 2038
+
