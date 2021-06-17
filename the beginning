@@ -1,15 +1,4 @@
 
-printf("hello, world"); #printf equals to 'say' in Scratch
-                        #semicolon ';' presents the end of the thought
-
-get_string("What's your name? ") #get_string equals to 'ask' in Scratch
-string answer = get_string("What's your name? "); #we copy the answer into a variable named 'answer'
-
-#return value: a piece of information, being stored somewhere, where we can make use of it later
-printf("hello, %s", answer); #first comma is a grammatical one, while the second comma separates the first argument from the second one
-
-------------------------------------------------------------------------------------------------------------------------------------------
-
 int main(void)
 {
     string answer = get_string("What's your name?? ");
@@ -229,7 +218,7 @@ RETURN:
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
-printf("%f\n", x / y); #gives a certain number of deciaml points
+printf("%f\n", x / y); #gives a certain number of decimal points
 printf("%.10f\n", x / y); #gives 10 decimal points: impercision (a computer can only give a finite number of decimal points, after that it approximates)
 
 integer overflow:
@@ -241,5 +230,137 @@ integer overflow:
 110
 111 = 7
 
-19 January 2038
+------------------------------------------------------------------------------------------------------------------------------------------
+
+make hello
+./hello
+
+CLANG: compiller that turns source code into machine code
+clang hello.c 
+ls
+a.out
+rm a.out
+
+COMMAND: clang -o hello hello.c = run clang, output hello from the hello.c
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string answer = get_string("What's your name?? ");
+    print("hello, %s, answer");
+}
+
+terminal: make hello = clang -o hello hello.c -lcs50 (-l = link; without it there is an error)
+
+-lcrypt crypto library
+-lm math library
+
+stdio.h
+cs50.h
+help50
+style50
+check50
+printf
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+DEBUGGING CODE:
+
+#include <stdio.h>
+
+int main(void)
+{
+   // print 10 hashes
+   for (int = 0; i <= 10; i++)
+   {
+      printf("i is now %i\n", i); #we can add a line: we can use printf to see the value of i
+      printf("#\n");
+    }
+}
+
+make buggy0: no error, but it prints 11 hashes instead of 10
+by adding this "printf("i is now %i\n", i);" we can clearly see which hash belongs to what number
+changing <= to < gives us 10 hashes
+
+
+debug50: runs the code step by step
+debug50 ./buggy0
+
+control + C will always break you out of the program
+
+
+#include <cs50.h>
+#include <stdio.h>
+
+int get_negative_int(void)
+
+int main(void)
+{
+   int i = get_negative_int();
+   printf("%\n", i);
+}
+
+int get_negative_int(void)
+{
+   int n;
+   do
+   {
+     n = get_int("Negative Integer: ")
+   }
+   while (n < 0); #source of the bug: change is: while (n > 0);
+   return n;
+}
+
+rubber duck debugging
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+ARRAYS: sequences of values stored in a memory back to back
+
+the average:
+
+int main(void)
+{
+   int score1 = 72;
+   int score2 = 73;
+   int score3 = 33;
+   
+   
+   improving the design of code:
+   
+   int scores[3];  the number inside the brackets tells us how many integers can we store in array
+   score[0] = 72;  we have to start counting from zero
+   score[1] = 73;  when declaring the number of arrays, inside the bracket is the total number of values
+   score[2] = 33;  
+   
+if there is at least one float, the result will also be a float (not integer) as it is more powerful
+
+
+const int TOTAL = 3; # the value cannot change, CAPITAL LETTERS SIGNIFY THAT IT'S A DIFFERENT KIND OF NUMBER
+
+int main(void)
+{   
+   int scores[TOTAL];  
+   for (int i = 0, i < TOTAL, i++)
+   {
+      scores[i] = get_int("Score: ");  
+   }
+   
+   print("Average: %f\n", average(TOTAL, scores));
+}
+
+// a function that computes the average
+float average(int length, int array[])
+{
+   int sum = 0;
+   for (int i = 0; i < length; i++)
+   {
+      sum = sum + array[i];
+   }
+   return sum / (float) length;
+}
+
+
 
