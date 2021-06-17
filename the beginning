@@ -362,5 +362,176 @@ float average(int length, int array[])
    return sum / (float) length;
 }
 
+---------------------------------------------------------------------------------------
 
+CASTING THE CHARACTER: 
+char: single character: single quotes
+string: multiple characters: double quotes
+
+int main(void)
+{ 
+   char c = '#'
+   
+   print("%i\n", c);
+}
+terminal: 35 a number assigned to # in ASCII
+
+
+int main(void)
+{ 
+   string s = "HI!";
+   
+   print("%s\n", c);
+}
+terminal: HI! or 72, 73, 33
+
+a string is an array
+
+s[0] = H = 72
+s[1] = I = 73
+s[2] = ! = 33
+s[3] = \0 NUL: 4th byte: a special character that represents the end of string = 0
+a string is an array
+
+program that prints out the length of the string
+
+int main(void)
+{
+   string s = get_string("Input: ");
+   printf("Output: ");
+   for (int i = 0; s[i] != '\0'; i++) # when to stop printing a string: print as long as a character in string does not equal NUL
+   {                                  # != does not equal
+      printf("%c", s[i]);
+   }
+}
+s[i] != '\0' in C equals to i < strlen(s) (string lenght) in file <string.h> (#include)
+
+
+so that we don't repeat the same function over and over, we can introduce variable n
+
+int main(void)
+{
+   string s = get_string("Input: ");
+   printf("Output: ");
+   for (int i = 0, n = strlen(s); i < n; i++)
+   {                                  
+      printf("%c", s[i]);
+   }
+}
+
+---------------------------------------------------------------------------------------
+
+an array of arrays:
+
+string words[0]
+words[0] = "Hi!"   words[0][0] = H, words[0][1] = i, ...
+words[1] = "Bye!"  words[1][0] = B, words[1][1] = y, ...
+
+
+a program that converts an input word into an uppercase
+
+#include <cs50.h>
+#include <stdio.h>
+#include <ctype.h>
+
+int main(void)
+{
+   string s = get_string("Before: ");
+   printf("After: ");
+   for (int i = 0, n = strlen(s); i < n; i++)
+   {
+      if (s[i] >= 'a' && s[i] <= 'z')  # if s[i] is greater than a and less than z
+      {                                # in ASCII lower and upper letters are consistently 32 places apart
+         printf("%c", s[i] - 32);
+      }
+   }
+   else
+   {
+      printf("%c", s[i]);
+   }
+}
+
+a better version of this:
+add #include <string.h> 
+
+int main(void)
+{
+   string s = get_string("Before: ");
+   printf("After: ");
+   for (int i = 0, n = strlen(s); i < n; i++)
+   {
+      printf("%c", toupper(s[i]));   #toupper expects a character so the loop is important as it defines each character
+   }  
+}
+
+---------------------------------------------------------------------------------------
+
+command-line argument: for example 'hello'
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(int argc, string argv[]) # function main takes an integer and an array of strings
+{
+   if (argc ==2)
+   {
+      printf("hello, %s\n", argv[1]);  # [1] means that the second word typed into terminal is used next to 'hello'
+   }
+   else
+   {
+      printf("hello, world\n");
+   }
+}
+
+if the user types 2 words at the prompt, it will return 'hello, name', otherwise it will just say 'hello, world'
+the program lets user to type into terminal any number of words:
+if two words are typed (including ./argv), the second word will be printed next to 'hello'
+if more or less than 2 words are typed, the program will return 'hello, world'
+
+terminal: make argv
+./argv = hello, world
+./argv David = hello, David
+./argv Brian Yu = hello, world
+
+
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h> 
+
+int main(int argc, string argv[]) # function main takes an integer and an array of strings
+{
+   if (argc ==2)
+   {
+      for (int i = 0, n = strlen(argv[1]); i < n; i++)
+      {
+         printf("%c\n", argv[1][i]);
+      }
+   }
+}
+Terminal: ./argv David = vertically spelled D a v i d (printing one character at the time)
+
+
+an exit status:
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(int argc, string argv[])
+{
+   if (argc != 2)
+   {
+      printf("missing command-line argument\n");
+      return 1;
+   }
+   printf("hello, %s\n", argv[1]);
+   return 0;
+}
+
+Terminal: ./exit = missing command-line argument
+          ./exit David = hello, David
+
+---------------------------------------------------------------------------------------
+
+crypting the text:
+plaintext(input) + key - cipher - ciphertext(output)
 
