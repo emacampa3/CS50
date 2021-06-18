@@ -535,3 +535,192 @@ Terminal: ./exit = missing command-line argument
 crypting the text:
 plaintext(input) + key - cipher - ciphertext(output)
 
+-------------------------------------------------------------------------------------------------------------
+
+ALGORITHMS:
+running time of an algorithm: how long it takes, how many steps it has (unit of messure is not important)
+big O notation: describes a running time of algorithm
+Ω omega notation: discribes the lower bound (how many steps does an algorithm minimally takes)
+
+LINEAR SEARCH: searching the book page by page
+
+PSEUDO CODE FOR LINEAR SEARCH: 
+For i from 0 to n-1
+   If number behind i'th door
+       Return true
+Return false
+       
+efficency:
+upper bound on the running time: O(n) in the worst case, it will be the last one
+lower bound on the running time: Ω(1) in the best case we can find it in first try
+
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+   int numbers[] = {4, 6, 8, 2, 7, 5, 0}; #values of array
+   
+   for (int i = 0; i < 7; i++)
+   {
+      if (numbers[i] == 0)
+      {
+         printf("Found\n");
+         return 0; 
+      }
+   }
+   printf("Not found\n");
+   return 1;  
+}
+main always returns int, so it's usefull to add the exit code 0 (success: program exits) and 1 
+
+
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+   string names[] = {"Bill", "Charlie", "Fred", "George", "Ginny", "Percy", "Ron"}; # no need to input the size of array
+                                                                                    
+   for (int i = 0; i < 7; i++)
+   {
+      if (strcmp(names[i], "Ron") == 0)
+      {
+         printf("Found\n");
+         return 0; 
+      }
+   }
+   printf("Not found\n");
+   return 1;  
+}
+
+string compare(compares every character by changing them to their ASCII code; case sensitive) has 3 possible outcomes: 
+strings are equal: returns the value 0
+first string is supposed to come before the second string: returns a negative value
+first string is supposed to come after the second string: returns a positive value
+
+line 588: only when the strcmp line == 0, do we have a match
+
+
+typedef struct  # allows to define new data types (here: person)
+{
+   string name;
+   string number;
+}
+person;
+
+Phonebook program:
+
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+typedef struct
+{
+   string name;
+   string number;
+}
+person;
+
+const int NUMBER = 10;
+int main(void)
+{
+   person people[NUMBER];
+   
+   people[0].name = "Brian";
+   people[0].number = "+1-617-495-1000";
+   
+   people[1] = "David";
+   people[1].number = "+1-792-910-8319";
+   
+   ...
+   
+   for(int i = 0; i < 10; i++)
+   {
+      if (strcmp(people[i].name; "David") == 0)
+      {
+         printf("Found %s\", people[i].number);
+         return 0;
+      }
+   }
+   printf("Not founf\n");
+   return 1;
+}
+
+
+BINARY SEARCH: data has to be sorted
+
+pseudo code:
+If no doors
+    Return false
+If number is behind middle door
+   Return true
+Else if number < middle door
+   Search left half
+Else if number > middle door
+   Search right half
+   
+efficency:
+upper bound on the running time: O(log n) max
+lower bound on the running time: Ω(1) min
+
+
+SELECTION SORT: 
+upper bound: n(n + 1)/2 = n*2/2 + n/2 = O(n*2) slow
+lower bound: Ω(n*2) slow
+
+Pseudo code:
+For i from 0 to n-1
+   Find smallest item between i'th item and last item
+   Swap smallest item with i'th item
+
+
+BUBBLE SORT: the biggest numbers start bubbling their way to the end of the list
+We look at pair of numbers and move the bigger number to the right side of the pair and repeat, 
+so the highest number goes to the back of the list
+
+Pseudo code:
+Repeat until sorted
+   For i from 0 to n-2
+      If i'th and i+1'th elemens out of order
+         Swap them
+   If no swap
+      Quit
+      
+lower bound: Ω(n)
+upper bound: (n - 1)x(n - 1) = O(n*2) equivalent to the selection sort: slow
+
+
+RECURSION or MERGE SORT: the ability for a function to call itself
+Uses more space as it needs a second array
+
+Pseudo code:
+If only one number
+   Quit
+Else
+   Sort right half of numbers    # sort = sort left, sort right and merge
+   Sort left half of numbers
+   Merge sorted halves
+
+merge: the smallest number of the combined array needs to begin with either 
+       the smallest number of the left or right array, we then build the 
+       sorted array with picking the smallest numbers
+We sort 4 to halves, and then halves to 1, sort each halves (arrays of sizes 2) and then merge them to array size 4
+
+lower bound: Ω(log n) fast
+upper bound: O(n log n) fast
+----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
