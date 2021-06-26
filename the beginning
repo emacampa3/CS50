@@ -711,12 +711,278 @@ We sort 4 to halves, and then halves to 1, sort each halves (arrays of sizes 2) 
 
 lower bound: Ω(log n) fast
 upper bound: O(n log n) fast
+
 ----------------------------------------------------------------------------------------------------------------------------
 
+hexadecimal: BASE-16: 16 digits: 0 1 2 3 4 5 6 7 8 9 A B C D E F
+00 01 02 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10 11 12 13 14 15 16 17 18 19 1A ...
+255: EIGHT BITS OF 1 OR TWO HEXADECIMAL DIGITS: 11111111 = FF
+WE MARK HEXADECIMAL DIGITS to make a difference from normal numbers: 0x48
+
+000000: black
+FFFFFF: white
+FF0000: red
+00FFOO: green
+0000FF: blue
 
 
+int main(void)
+{
+   int n = 50;
+   printf("%p\n", &n); # address of 'n'
+}
+
+TERMINAL gives us: 0x7ffd80792f7c # in hexadecimals
+
+address of the number 50 may be for example: 0x12345678 (every number has an address)
+
+&: address of an operator
+*: go to the following address
+*&: combination of both gives us 50
 
 
+POINTER: a variable, that contains an address of some other value (integer, bool, and so on) 
+int *p = pointer: tend to take 8 bytes
+
+int main(void)
+{
+   int n = 50;
+   int *p = &n; # we are storing the address of n in *p
+   printf("%p\n", &n); 
+}
+TERMINAL: we get *p: the address of the int n
+
+
+int main(void)
+{
+   int n = 50;
+   int *p = &n;
+   printf("%i\n", *p); 
+}
+TERMINAL: we get the number 50
+
+string s = "HI!" 
+H I ! \0: we can assign each letter as a part of array or as an address: there is one number of difference between each letter
+H = 0x123  I = 0x124 ...
+s = variable = 0x123 string is an address of the first character of the address
+
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+   string s = "HI!"
+   printf("%p\n", &s[0]); # show string s as an address/pointer
+   printf("%p\n", &s[1]); # show the address of the second character
+}
+TERMINAL: gives us two addresses of the two characters: similar, only the last digits are different
+0x0987
+0x0988
+
+STRINGS are pointers: you can always find the whole word if you know where the first letter is as the word ends with \0
+
+POINTER VARIABLE: 
+string s = char *s
+
+
+#include <stdio.h>
+
+int main(void)
+{
+   char *s = "HI!"
+   printf("%c\n", *s);
+   printf("%c\n", *(s+1)); #the same as square brackets notation s[]
+   printf("%c\n", *(s+2)); # we can got tp the character that is 2 bytes away from character s
+}
+TERMINAL: HI!
+
+
+COMPARE TWO VARIABLES:
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+   char *s = get_string("s: "); # s stores the adress of the first character of the s string: s is a variable, pointing at a variable 
+   char *t = get_string("t: "); # t is a variable, pointing at a variable
+   
+   printf("%p\n", s);
+   printf("%p\n", t);
+}
+TERMINAL: even if we type the same thing two times, the adresses will be different
+
+
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+   char *s = get_string("s: ");
+   char *t = get_string("t: ");
+   
+   if (strcmp(s, t) == 0)
+   {
+      printf("Same\n"):
+   }
+   else
+   {
+      printf("Different\n");
+   }
+}
+TERMINAL: if we type the same string two times, it prints 'same', otherwise it prints 'different'
+
+
+COPYING ONE STRING INTO ANOTHER:
+
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h> # includes malloc
+#include <ctype.h>
+
+int main(void)
+{
+   char *s = get_string("s: ");
+   
+   char *t = malloc(strlen(s) + 1);   # give me as much space as is the length of the string + 1 for NUL character
+   if (t == NULL)
+   {
+      return 1;  # in case there is memory-loss, quit
+   }
+   
+   for (int i = 0, n = strlen(s); i <= n; i++)   # <= : we have n + 1 characters (we have to count NUL)
+   {
+      t[i] = s[i];
+   }
+   
+   if (strlen(t) > 0)
+   {
+      t[0] = toupper(t[0]);
+   }
+   
+   printf("s: %s\n", s);
+   printf("t: %s\n", t);
+   
+   free(t);   # we are freeing the space the variable t used
+}
+
+TERMINAL: returns the lowercase and the uppercase verion where only the first letter is capitalised
+
+malloc: memory allocation
+toupper: capitalising the letter
+NULL: no adress
+
+copying one string into another: instead of loop, we can use another function: strcopy(s, t);
+we are duplicating the string into a  different space in memory
+
+for (int i = 0, n = strlen(s); i <= n; i++)   # <= : we have n + 1 characters (we have to count NUL)
+   {
+      t[i] = s[i];
+   }
+
+malloc: we ask the computer for memory, but eventually it can run out of it, as it is finite, so we have to always free it afterwards
+
+----------------------------------------------------------------------------------------------------------------------------
+VALGRIND: we can run it on our code to find memory bugs
+valgrind ./name_of_the_program
+
+int main(void)
+{
+   int *x;
+   int *y
+   
+   x = malloc(sizeof(int));    # we allocate the pointer to pointee
+   
+   *x = 42;      # at that address (*x) we are putting 42
+   *y = 13;      # put 13 at the address of y
+  
+  y = x;   # y points to the same place as x
+  
+  *y = 13;
+}
+
+GARBAGE VALUE: 
+Allocating a variable ensures that any memory for that variable is reserved. 
+If a variable is assigned but not allocated in some programming languages such as C, 
+it is said to have a garbage value, such that, certain data kept by some random set 
+of the storage of the computer.
+
+
+SWAPING THE NUMBERS IN VARIABLES (passing the values from one function to another):
+void swap(int *a, int *b)
+
+int main(void)
+{
+   int x = 1;
+   int y = 2;
+   
+   printf("x is %i, y is %i\n, x, y);
+   swap(&x, &y);
+   printf("x is %i, y is %i\n, x, y);
+}
+
+void swap(int *a, int *b) # pointers
+{
+   int tmp = *a;  # tmp is an integer, *a and *b are addresses
+   *a = *b;
+   *b = tmp;
+}
+
+STACK(functions): place where memory gets used and reused
+stack overflow: calling a function so many times that it overflows the area of memory called heap
+buffer overflow: going beyond the boundry of the memory
+
+
+scanf
+
+get_int is the same as all the code below
+
+#include <stdio.h>
+
+int main(void)
+{
+   int x;
+   printf("x: ");
+   scanf("%i, &x");
+   printf("x: %i\n", x);
+}
+
+get_string
+
+#include <stdio.h>
+
+int main(void)
+{
+   char s[4]; # we allocate 4 bytes of memory
+   printf("s: ");
+   scanf("%s, s");
+   printf("s: %s\n", s);
+}
+
+----------------------------------------------------------------------------------------------------------------------------
+file I/O
+
+this program prompts a user for name and number and then add them to the file
+
+int main(void)
+{
+   FILE *file = fopen("phonebook.csv", "a");
+   if (file == NULL)
+   {
+      return 1;
+   }
+   
+   char *name = get_string("Name: ");  
+   char *name = get_string("Name: ");  
+   
+   fprintf(file, "%s,%s\n", name, number) 
+   
+   fclose(file);
+}
+
+after inputing the numbers and names: we can download the file and open it
 
 
 
