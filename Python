@@ -1,0 +1,95 @@
+Introduction: SYNTAX
+
+print("hello, world")
+
+
+from cs50 import get_string (cs50 is a python library)
+
+answer = get_string("What's your name? ") 
+print("hello, " + answer) = print(f"hello, {answer}")   f string
+
+we run the program by typing 'python' (name of the language) and add the name of the program (for example: hello.py)
+all python programs end with .py
+
+'+' joins one string to another
+
+counter = 0 in python we don't need to mention the type of variable we want (for example int, str, ...)
+variable named counter equals 0
+
+counter = counter + 1
+counter += 1
+
+if x < y:
+    print("x is less thay y")
+elif x > y:
+    print("x is greater than y")
+else:
+    print("x is equal to y")
+
+4 spaces indented
+else if = elif
+
+
+LOOPS:
+
+while True:
+    print("hello, world")
+True and False are capitalised
+
+i = 0
+while i < 3:
+    print("hello, world")
+    i += 1
+
+
+FOR LOOP:
+
+for i in [0, 1, 2]:
+    print("hello, world")
+[0, 1, 2] in python that's a list: first i = 0, then i = 1 and lastly, i = 2
+
+for i in range(3):        
+    print("hello, world")
+same as above, but easier when operating with bigger numbers
+range generates a list of 3 values
+
+DATA TYPES in Python:
+bool (True, False)
+float (real number with decimal points)
+int (numbers without decimal points)
+str (strings)
+
+range: gives you a range of values
+list: array that can be resized
+tuple: a way of implementing comma separated values: (x,y)
+dict: (dictionaries) allow you to store keys and values
+set: collection of values without duplicates
+
+IMPORTING A LIBRARY:
+import cs50
+from cs50 import get_float
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
