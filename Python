@@ -245,6 +245,158 @@ average = sum(scores) / len(scores)
 print(f"Average: {average}")
 
     
+UPPERCASE: program that asks the user for input and then prints the output in upper letters
+from cs50 import get_string
+
+s = get_string("Before: ")
+print("After: ",end="")
+print(s.upper())
+
+another version:
+s = get_string("Before: ")
+print("After: ",end="")
+for c in s:
+    print(c.upper(), end="")
+print()
+
+
+ARGV:
+from sys import argv
+
+if len(argv) == 2:
+    print(f"hello, {argv[1]"})
+else:
+    print("hello, world")
+TERMINAL: 
+to run the program we type: python argv.py Ema: 'argv.py' is [0] and 'Ema' is [1]
+'python' is an interpreter/programs name
+if we just run the program (python argv.py), it's output is 'hello, world', 
+but if we also type our name besides running the program, it outputs 'hello, Ema'
+
+for sys in argv
+
+for arg in argv:
+    print(arg)
+TERMINAL: prints everything we type after programs name 'python'
+
+
+EXIT: demonstrates the exist statuses
+import sys               # we are importing the whole library as we are using more funtions, 
+                           meaning we now have to prefix each function with sys.
+if len(sys.argv) != 2:
+    print("missing comman-line argument")
+    sys.exit(1)
+    
+print(f"hello, {sys.argv[1]}")
+sys.exit(0)
+TERMINAL: python exit.py: returns 'missing comman-line argument'
+          python exit.py Ema: returns hello, Ema
+if two arguments are typed, it returns a string, otherwise the program exits
+
+
+NUMBERS: linear search for number 0
+import sys
+
+numbers = [4, 6, 8, 2, 7, 5, 0]
+
+if 0 in numbers:
+    print("Found")
+    sys.exit(0)
+else:
+    print("Not found")
+    sys.exit(1)
+
+
+PHONEBOOK:
+from cs50 import get_string
+
+people = {                             # a new variable that is a dictionary
+    "Brian": "09876543",
+    "David": "34567890"
+}
+
+name = get_string("Name:")             # getting a string from the user
+if name in people: 
+    number = people[name]              # searching the dictionary for name
+    print(f"Number: {number}")         # returning the number associated with the name
+
+TERMINAL: 
+Name: Brian (that's what a user types)
+Number: 09876543
+
+dictionary is defined with {} at the beginning and at end
+dictionaries in python are implemented using a hash table
+
+
+PHONEBOOK.PY and PHONEBOOK.CSV (a spreadsheet)
+import csv
+
+from cs50 import get_string
+
+with open("phonebook.csv", "a") as file:  # opening this file in append mode
+                                            'with open' then automatically closes it after the indention ends
+    name = get_string("Name: ")
+    number = get_string("Number: ")
+
+    writer = csv.writer(file)          # wrapping the file with a csv functionality
+
+    writer.writerow([name, number])    # writing a row to this file
+
+TERMINAL: open phonebook.csv
+          python phonebook.py
+          Name: Brian
+          Number: 098765
+          if we now open our csv file, on the first line we get: 
+          name,number
+          Brian,098765
+
+
+SWAP:
+x = 1
+y = 2
+
+print(f" x is {x}, y is {y}")
+x, y = y, x                     # we are switcing variables without a temporary variable explicitly
+print(f" x is {x}, y is {y}")
+TERMINAL: x is 1, y is 2
+          x is 2, y is 1
+
+
+HOGWARDS.PY: a program that annalyses the csv file (.csv) any way we want
+import csv
+houses = {
+    "Gryffindor": 0,
+    "Hufflepuff": 0,
+    "Ravenclav": 0,
+    "Slytherin": 0
+}
+
+with open("file_name", "r") as file:
+    reader = csv.reader(file)
+    next(reader)                     # skips the first row
+    for row in reader:
+        house = row[1]
+        houses[house] += 1
+
+for house in houses:
+    print(f"{house}: {houses[house]}")
+
+TERMINAL: Gryffindor: 120
+          Hufflepuff: 40
+          Ravenclav: 71
+          Slytherin: 43
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
