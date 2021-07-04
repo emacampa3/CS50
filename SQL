@@ -1,0 +1,180 @@
+SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held 
+in a relational database management system, or for stream processing in a relational data 
+stream management system. 
+
+spreadsheets: 
+good for quickly sorting, storing large amounts/rows/columns of data: limited to computers memory
+adding more data to the bottom, it grows vertically
+
+flat-file database: simple design, for example: CSV (comma separated values) cannot store functions
+problem: if in the spreadsheet name or some value contains a comma, 
+that could be confused with the comma separating rows of the spreadsheet:
+solution is to use double quotes for a string that contains commas, to keep it uniformed
+
+
+after having a spreadsheet in csv, we can open it in Python:
+
+import csv
+
+titles = set()                                                         # throws away the duplicates
+
+with open("Favourite TV Shows - Form Responses 1.csv", "r") as file:   # opening a csv file in read-only mode
+    reader csv.DictReader(file)                                        # dictionary reader
+    for row in reader:
+        titles.add(row["title"].strip().upper())                      # we can add new titles to the titles: throwing away duplicate values, only printing out the unique titles
+                                                                         changing the titles all to .upper: so we shouldn't get duplicates based on case sensitivity
+for title in sorted(titles):                                           # sorting the results with a function in Python named 'sorted'
+    print(title)
+    
+.strip: removes all the white space on both sides of the string
+in Python we can add more functions together
+after all that our data is clean (we get a list without duplicates), apart from the typos
+
+
+FAVOURITE TV SHOWS:
+import csv
+
+titles = {}                                                       
+
+with open("Favourite TV Shows - Form Responses 1.csv", "r") as file:   
+    reader csv.DictReader(file)                                        
+    for row in reader:
+        title = row["title"].strip().upper()
+        if title in titles:
+            titles[title] += 1                                         # goes to the dictionary under the correct title and adds 1 to whatever value is there already
+        else:
+            titles[title] = 0                                          # we can go into a dictionary, using a key that does or doesn't exist: if it does, 
+                                                                         add 1 to its value, otherwise set it to 0      
+def f(titles):                                                         # a short function f that for every title returns the value associated with it
+    return titles[title]
+    
+for title in sorted(titles, key=f, reverse=True):                      # we can override the function sorted()
+    print(title, titles[title])                                        # we can print more values: print function will put a space between them
+
+
+
+dict() = {}: create a dictionary 
+
+sorted() sorts dictionaries by keys, not value: so we need a function to sort the titles by value
+sorted() also has another optional parameter: reverse=True that just reverses the order
+
+we could define a new function 'f' that returns the value of the key: the dictinary will now be sorted by value
+in Python you can pass around functions as arguments by their name
+
+key=f(): calling a function would be wrong, as without () the sorted() function can rather call the f function 
+         over and over again, rather than calling it only once
+
+in Python if we have simple functions as 'f': we can use it without defining it
+lambda: gives us a function without a name that only cares about arguments and return values: key=lambda argument_name: return_value
+
+def f(titles):
+    return titles[title]
+
+for title in sorted(titles, key=lambda title: titles[title], reverse=True):
+that way we don't need to keep defining new functions
+
+
+instead of this:
+if title in titles:
+            titles[title] += 1
+        else:
+            titles[title] = 0
+
+we can use:
+if title not in titles:
+    titles[titles] = 0
+titles[title] += 1                  # same as before but shorter: also we are not adding anything 
+                                      to the dictionary until we are sure title is indeed in there
+
+THE WHOLE PROGRAM:
+import csv
+
+titles = {}                                                       
+
+with open("Favourite TV Shows - Form Responses 1.csv", "r") as file:   
+    reader csv.DictReader(file)                                        
+    for row in reader:
+        title = row["title"].strip().upper()
+        if title not in titles:
+            titles[titles] = 0
+        titles[title] += 1   
+                                                            
+for title in sorted(titles, key=lambda title: titles[title], reverse=True):               
+    print(title, titles[title])
+    
+TERMINAL: returns the list of titles in order of descending values
+
+
+NEW PROGRAM: search for the specific show in csv file and return the popularity of it
+import csv
+
+title = inout("Title: ").strip().upper()
+with open("Favourite TV Shows - Form Responses 1.csv", "r") as file:
+    reader = csv.DictReader(file)
+    counter = 0
+    for row in reader:
+        if row["title"].strip().upper() == title:
+            counter += 1
+
+print(counter)
+TERMINAL: Title: The Office: the answer is 26
+
+Running time of the program: 0(n) linear search
+Flat-file database: useful for smaller data sets
+
+
+RELATIONAL DATABASES: implemented in software, offer more functions: we can search, insert new or delete the data more efficently
+those databases store the information in tables
+
+SQLite: light version of SQL: stores data in a binary file
+sqlite3: command-line tool: allows you to interact with tables
+
+commands:
+.mode csv
+.import imported_file_name new_table_name (takes 2 arguments)
+
+new language SQL (Structured Query Language) used for interactions with relational databases
+4 basic operations supported by any relational database: CREATE, READ, UPDATE, DELETE: CRUD (acronym)
+in SQL: CREATE, INSERT
+        SELECT (reading the database)
+        UPDATE
+        DELETE
+
+syntax used to create a table in SQL
+CREATE TABLE table (column type, ...);
+SELECT columns FROM table; in our case: SELECT title FROM shows (look at row 'title' in file 'shows')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
