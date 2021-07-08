@@ -1,0 +1,19 @@
+internet: a network of networks: transmits data from one point to another
+protocol: a set of conventions
+TCP/IP: two often used protocols
+IP = INTERNET PROTOCOL: unique address of the computer
+DNS = DOMAIN NAME SYSTEM (a service that translates the human-readable characters to the IP address)
+TCP = TRANSMISSION CONTROL PROTOCOL TCP includes mechanisms to solve many of the problems that arise 
+      from packet-based messaging, such as lost packets, out of order packets, duplicate packets, 
+      and corrupted packets (portions of data).
+port number: an integer that represents a specific internet service requests (for example: 80 is HTTP)
+data goes on different paths each time: a solution to over-loaded routers
+
+quality of service = large packets are sliced into smaller ones, grouped together with other packets,
+                     so everyone reaches the destination at the same rate
+net neutrality = prioritizing data sent from certain companies, that pay more
+
+the recipient should get the order of the packets right: a sequence number should be on each packet 
+                                                         of data (also ensures to know if any packets get lost)
+                                                         
+                                                      
