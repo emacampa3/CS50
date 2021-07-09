@@ -41,7 +41,87 @@ everytime we open a web page: lots of photos and text (other media) open as well
 URL Parameters: url does support user input
 search?q=cats 'search for cats'
 
-HTML: mark-up language
+
+HTML: hyper-text mark-up language (not a programming language, just tells the browser what to display and how)
+html page will contain two elements: 
+TAGS (elements)
+ATTRIBUTES phrases that have special meaning (lang="en" clue to the browser that contents of the webpage are in English)
+
+
+<!DOCTYPE html>  DOCUMENT
+
+<html lang="en">  CONTENTS OF WEBPAGE (OPEN/START TAG)
+    <head>  TAG
+        <title>  TAG
+            hello, title  RAW TEXT
+        </title>
+    </head>
+    <body>  TAG
+        hello, body
+    </body>
+</html>  CLOSED/END TAG
+
+html is saved on server so others can reach it via internet
+indenting isn't a must, but it makes the document readable
+
+
+paragraphs.html <p> by inserting it between text it'll add paragraphs to it
+copy/paste is usefull in html, as there are no loops
+
+
+headings.html 
+<h1>One<h1>
+<h2>Two<h2>
+...
+by adding this in front of paragraph, we create subtitles/headings above each paragraph
+bigger the number, lower the heading, but we can customise it
+
+list.html 
+<ul> = unordered list (not numbered)
+<li> = list item (inside the list) creates a bulleted list
+<ol> = ordered list (numbered list)
+
+table.html <table>
+           <tr> = table rows
+           <td> = table data (data that we want inside the table)
+
+image.html <img alt=" " src=" ">
+
+link.html 
+Visit <a href="https://www.harvard.edu">Harvard</a>. 
+creates a link tag that connects the word with link
+links are blue until you click them and afterwards turn purple
+
+<style>
+    
+    a
+    {
+        color: #ff0000;
+        text-decoration: none;
+    }
+    
+    a:hover
+    {
+        text-decoration: underline;
+    }
+
+</style>
+turns links into red colour without the underlyings, but when hovering over link, it underlines
+
+# means an uniques identifier
+we can also give each link a different id and then choose different colours for them
+
+HTML FORM:
+a form the action of which is to send user to the link they requested:
+when an user types something into "q", browser converts that into corresponding http request and url
+
+<form action="https://www.google.search" method="get">
+    <input name="q" type="search">
+    <input type="submit" value="Search">
+</form>
+
+method="post" = a different verb that hides the input of the user: 
+it doesn't put it into url bar, rather to the server directly
 
 
 
