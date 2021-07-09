@@ -261,6 +261,19 @@ a simple form that lets the user type in their name and then greets them
 
 ...
 
+even better version: so we don't need to define a new function we only use once:
+
+<script>
+    
+    document.addEvenListener('DOMContentLoaded', function() {                   # annonymous function inside another annoymous function
+        document.querySelector('form').addEventListener('sumbit', function() {
+            let name = document.querySelector('#name').value;
+         alert('hello, ' + name);
+        });
+    });
+    
+</script>
+
 
 
 
