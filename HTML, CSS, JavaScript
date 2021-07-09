@@ -184,7 +184,100 @@ and we can link the styles.css inside the html file
 
 
 
-JAVASCRIPT:
+JAVASCRIPT: 
+
+some examples:
+let counter = 0;
+counter++;
+
+if (x < y)
+{
+
+}
+else if (x > y)
+{
+
+}
+else
+{
+
+}
+
+while (true)
+{
+
+}
+
+for (let i = 0; i < 3; i++)
+{
+
+}
+
+JavaScript can be used to make dynamic/interactive webpages: 
+<script> synatx in between which we write Java can go into <body> or <head>
+
+<!DOCTYPE html>  DOCUMENT
+
+<html lang="en"> 
+    <head>
+        <script>
+        
+            function greet()
+            {
+                let name = document.querySelector('#name').value;   # document.querySelector comes with Java that select the node 'name'
+                alert('hello, ' + name);
+            }
+        
+        </script>
+        <title>  
+            hello, title 
+        </title>
+    </head>
+    <body>  
+        <form onsubmit="greet(); return false;">   # call the function but don't submit the form anywhere
+            <input autocomplete="off" autofocus="on" id="name" placeholder="What's your name?" type="text">   # placeholder: appears at input
+            <input type="submit" value="Greet Me">   # instead of 'submit' it says 'Greet Me'
+        </form>
+    </body>
+</html>
+a simple form that lets the user type in their name and then greets them
+
+...
+
+<script>
+    function greet()
+    {
+        let name = document.querySelector('#name').value;
+        alert('hello, ' + name);
+    }
+    
+    function listen()
+    {
+        document.querySelector('form').addEventListener('sumbit', greet);
+    }
+    
+    document.addEvenListener('DOMContentLoaded', listen);   # don't do the following until DOMContent is loaded
+</script>
+
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
