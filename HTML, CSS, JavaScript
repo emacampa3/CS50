@@ -121,18 +121,70 @@ when an user types something into "q", browser converts that into corresponding 
 </form>
 
 method="post" = a different verb that hides the input of the user: 
-it doesn't put it into url bar, rather to the server directly
+it doesn't put it inside the url bar, rather to the server directly
 
 
 
+CSS: Cascading Style Sheets: a style sheet language used for describing the 
+presentation of a document written in a markup language such as HTML.
+
+<header style="font-size: large; text-align: center;">
+instead of repeating "text-align: center;" over and over inside the <header style>, 
+we can put it only once inside <body> and it will apply to everything inside the body
+
+&#169 numeric code of html entity
+
+
+instead of mixing CSS and html: we can use TYPE SELECTOR: 
+when we want to style every tag, we can put inside the the {} properties of the CSS
+
+<style> tag that goes to the head of the page
+
+    header {
+        font-size: large;
+        text-alight: center;
+    }
+    
+    main {
+        font-size: medium;
+        text-align: center;
+    }
+    
+    
+CLASS SELECTORS: 
+<style>
+
+    .centered
+    {
+        text-align: center;
+    }
+    
+    .large
+    {
+        font-size: large;
+    }
+    
+    .medium
+    {
+        font-size: medium;
+    }
+
+those are classes, but are not in use until we apply them to html tags
+<header class="centered large">
+<main class="centered medium">
+
+an even better version is:
+<body class="centered">
+    <header class="large">
+    <main class="medium">
+
+if more people are collaborating: there can be two separate files 
+and we can link the styles.css inside the html file
+<link href="styles.css" rel="stylesheet">
 
 
 
-
-
-
-
-
+JAVASCRIPT:
 
 
 
