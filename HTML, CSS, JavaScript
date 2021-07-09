@@ -1,3 +1,4 @@
+
 internet: a network of networks: transmits data from one point to another
 protocol: a set of conventions
 TCP/IP: two often used protocols
@@ -16,4 +17,42 @@ net neutrality = prioritizing data sent from certain companies, that pay more
 the recipient should get the order of the packets right: a sequence number should be on each packet 
                                                          of data (also ensures to know if any packets get lost)
                                                          
-                                                      
+HTTP: HYPER-TEXT TRANSFER PROTOCOL (means that contents of the packets are encypted): used for web browsers and web servers
+has a few functions: GET (browser will request the information from the server) and POST
+https://www.example.com/
+s = secure version of http
+DOMAIN NAME: example.com/ 
+com = type domain name (meanings: com = commercial, edu = educational, org = organisation, net = network)
+www = human convention to signify a web address (a visual clue)
+
+https://www.example.com/index.html is the actual address that you are searching for: 
+index.html is a name of the file you are requesting
+
+STATUS CODES: 
+200 OK: 'here is the data you requested'
+301 Moved Permanently: 'whatever you requested was moved permanently to a different url'
+404 Not Found: 'old url that no longer exists'
+
+certain pages can redirect user (for example from http to https: for security)
+
+browsers have developer tools to let you see what happens underneath the hood
+everytime we open a web page: lots of photos and text (other media) open as well that are a part of the page
+
+URL Parameters: url does support user input
+search?q=cats 'search for cats'
+
+HTML: mark-up language
+
+
+
+
+
+
+
+
+
+
+
+
+
+
