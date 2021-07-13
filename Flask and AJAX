@@ -165,8 +165,15 @@ def indx():
 in index.html we also have to change <form action="/" method="post">
 
 
+SESSIONS:
+Cookies: pieces of data, integrated into a computer via server, that remember you've been there before
+Set-Cookie: session=value (value is a random number that is unique)
+browsers with enabled cookies are constantly reminding the servers that you have been 
+there before, rather than prompting you to log in again (incognito mode disables all cookies)
 
 
+AJAX: a set of web development techniques using many web 
+      technologies on the client-side to create asynchronous web applications.
 
 
 
