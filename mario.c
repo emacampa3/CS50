@@ -13,12 +13,10 @@ int main(void){
         for (int j = height - 1; j > i; j--){
             printf(" ");
         }
-
         //hashes
         for (int j = 0; j <= i; j++){
             printf("#");
         }
-
         printf("\n");
     }
 }
