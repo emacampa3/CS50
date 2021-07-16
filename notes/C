@@ -2,17 +2,17 @@
 int main(void)
 {
     string answer = get_string("What's your name?? ");
-    print("hello, %s, answer");
+    print("hello, %s", answer);
 }
 
-printf("hello, world"); #printf equals to 'say' in Scratch
-                        #semicolon ';' presents the end of the thought
+printf("hello, world"); # printf equals to 'say' in Scratch
+                        # semicolon ';' presents the end of the thought
 
-get_string("What's your name? ") #get_string equals to 'ask' in Scratch
-string answer = get_string("What's your name? "); #we copy the answer into a variable named 'answer'
+get_string("What's your name? ")  # get_string equals to 'ask' in Scratch
+string answer = get_string("What's your name? ");  # we copy the answer into a variable named 'answer'
 
-#return value: a piece of information, being stored somewhere, where we can make use of it later
-printf("hello, %s", answer); #first comma is a grammatical one, while the second comma separates the first argument from the second one
+# return value: a piece of information, being stored somewhere, where we can make use of it later
+printf("hello, %s", answer);  # first comma is a grammatical one, while the second comma separates the first argument from the second one
 
 #include <stdio.h>
 int main(void) #this is how you start writing a program
@@ -25,13 +25,13 @@ int main(void) #this is how you start writing a program
 int main(void)
 {
     string answer = get_string("What's your name?? ");
-    print("hello, %s, answer");
+    print("hello, %s", answer);
 }
 
-include #<stdio.h>
+#include <stdio.h>
 int main(void)
 {
-    // Greet user #a remainder of what that line does
+    // Greet user  # a remainder of what that line does
     printf("hello, world")
 }
 
