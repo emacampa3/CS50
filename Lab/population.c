@@ -29,5 +29,4 @@ int main(void){
 
     //Printing the number of years needed
     printf("Years: %i\n", years);
-
-} 
+}
